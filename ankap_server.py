@@ -61,15 +61,14 @@ def start_motors(direction, right_pwm, left_pwm, engines_working_time):
     GPIO.setmode(GPIO.BCM)
     GPIO.setup([12, 13, 18, 19], GPIO.OUT)
 
-    if direction == "forward":
+    if direction == 'forward':
         print('ATTACK!!!')
-        # right_wheels("forward")
-        # left_wheels("forward")
-        GPIO.output([13, 18], GPIO.HIGH)
 
-    elif direction == "back":
-        right_wheels("back")
-        left_wheels("back")
+        GPIO.output(13, GPIO.HIGH)
+        GPIO.output(18, GPIO.HIGH)
+    # elif direction == 'back':
+    #     right_wheels("back")
+    #     left_wheels("back")
     else:
         pass
 
@@ -84,7 +83,7 @@ def right_wheels(direction):
         GPIO.output(13, GPIO.HIGH)
         time.sleep(1)
     elif direction == "back":
-        GPIO.output(12, GPIO.HIGH)
+        GPIO.output(13, GPIO.HIGH)
         time.sleep(1)
     else:
         pass
@@ -98,10 +97,10 @@ def left_wheels(direction):
     :return: None
     """
     if direction == "forward":
-        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(13, GPIO.HIGH)
         time.sleep(1)
     elif direction == "back":
-        GPIO.output(19, GPIO.HIGH)
+        GPIO.output(13, GPIO.HIGH)
         time.sleep(1)
     else:
         pass
@@ -110,3 +109,6 @@ def left_wheels(direction):
 
 if __name__ == '__main__':
     StartTcpServer()
+
+
+
